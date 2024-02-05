@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular Promedio</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 10;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    a{
+        color: white;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], input[type="date"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #555;
+    }
+</style>
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'ingresar_calificacion' %}">Ingresar Calificaciones</a></li>
+                <li><a href="{% url 'calcular_promedio' %}">Calcular Promedio</a></li>
+                <!-- Agrega más enlaces a otras páginas aquí -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Calcular Promedio</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.fecha_parcial1_inicio.label_tag }} {{ form.fecha_parcial1_inicio }}
+            {{ form.fecha_parcial1_fin.label_tag }} {{ form.fecha_parcial1_fin }}
+            {{ form.fecha_parcial2_inicio.label_tag }} {{ form.fecha_parcial2_inicio }}
+            {{ form.fecha_parcial2_fin.label_tag }} {{ form.fecha_parcial2_fin }}
+            <button type="submit">Calcular</button>
+        </form>
+        
+        {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+        {% endif %}
+        
+        <h2>Promedios por Estudiante</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Promedio Parcial 1</th>
+                    <th>Promedio Parcial 2</th>
+                    <th>Calificación Necesaria</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{ estudiante.nombre }}</td>
+                    <td>{{ estudiante.promedio_parcial1|default:"N/A" }}</td>
+                    <td>{{ estudiante.promedio_parcial2|default:"N/A" }}</td>
+                    <td>{{ estudiante.calificacion_necesaria|default:"N/A" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
