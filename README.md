@@ -68,9 +68,7 @@ Utiliza herramientas como flake8 para mantener la calidad y consistencia del có
 flake8
 ```
 
-## Despliegue
 
-Para desplegar este proyecto en un entorno de producción, sigue las instrucciones específicas de tu proveedor de hosting sobre la implementación de aplicaciones Django.
 
 ## Construido con
 
@@ -86,14 +84,6 @@ Utilizamos [SemVer](http://semver.org/) para el versionado. Para las versiones d
 
 ## Autores
 
-* **Tu Nombre** - *Desarrollo inicial* - [TuUsuario](https://github.com/TuUsuario)
+* **Andres Moreta** - [AndresMoreta](https://github.com/AndresMoreta20)
 
-## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para más detalles.
-
-## Agradecimientos
-
-* A todos los que contribuyeron al proyecto.
-* Inspiración.
-* Cualquiera que haya dedicado tiempo a ayudar con el desarrollo y las pruebas.
